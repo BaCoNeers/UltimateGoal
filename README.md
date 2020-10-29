@@ -1,6 +1,5 @@
 ## NOTICE
-##EPIC STYLE
-
+Trinit BaCoNeers
 This repository contains the public FTC SDK for the Ultimate Goal (2020-2021) competition season.
 
 Formerly this software project was hosted [here](https://github.com/FIRST-Tech-Challenge/Skystone).  Teams who are competing in the Ultimate Goal Challenge should use this new [FtcRobotController repository](https://github.com/FIRST-Tech-Challenge/FtcRobotController) instead of last season's (no longer updated) Skystone repository.
