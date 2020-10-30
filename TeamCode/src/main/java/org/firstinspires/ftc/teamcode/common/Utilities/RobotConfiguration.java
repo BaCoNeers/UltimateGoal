@@ -1,9 +1,11 @@
-package org.firstinspires.ftc.teamcode.common.TeleOp;
+package org.firstinspires.ftc.teamcode.common.Utilities;
 
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.TeleOp.DbgLog;
+import org.firstinspires.ftc.teamcode.common.TeleOp.ErrorUtil;
 
 
 /**
@@ -17,6 +19,7 @@ public abstract class RobotConfiguration {
      * assign your class instance variables to the saved device names in the hardware map
      * @param hardwareMap
      * @param telemetry
+     * @return
      */
     abstract protected void init(HardwareMap hardwareMap, Telemetry telemetry);
 

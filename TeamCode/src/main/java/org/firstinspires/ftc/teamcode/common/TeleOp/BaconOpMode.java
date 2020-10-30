@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.common.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.common.Utilities.MovingAverageTimer;
+
 /**
  * OpMode Abstract class that offers additional abstraction for opMode developers
  * including catch-all error handling
