@@ -1,5 +1,7 @@
 package org.baconeers.configurations;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.baconeers.common.utilities.RobotConfiguration;
@@ -15,8 +17,11 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
      *      E.g:
      *
      *      public DcMotor liftMotor = null;
-     * @return
      */
+
+     public DcMotor leftMotor;
+     public DcMotor rightMotor;
+
 
     @Override
     protected void init(HardwareMap hardwareMap, final Telemetry telemetry) {
@@ -42,6 +47,28 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
          *            }
          *
          */
+
+        try {
+            leftMotor = hardwareMap.get(DcMotor.class, "liftMotor");
+            if(leftMotor != null) {
+                leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+            }
+
+        } catch(Exception e) {
+            telemetry.addLine("leftMotor failed to configure");
+        }
+
+        try {
+            rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
+            if(leftMotor != null) {
+                leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+            }
+
+        } catch(Exception e) {
+            telemetry.addLine("rightMotor failed to configure");
+        }
 
         telemetry.addData("Initialized", "True");
         telemetry.update();
