@@ -16,9 +16,8 @@ public abstract class BaseTask {
     public static final double NANOS_IN_SECONDS = 1000000000.0;
 
 
-    public BaseTask(BaconOpMode opMode, double time) {
+    public BaseTask(BaconOpMode opMode) {
         this.opMode = opMode;
-
     }
 
     public abstract void run();
