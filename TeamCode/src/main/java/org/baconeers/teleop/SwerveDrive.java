@@ -48,6 +48,5 @@ public class SwerveDrive extends BaconComponent {
         config.leftMotor.setPower(leftMotorPower);
         config.rightMotor.setPower(rightMotorPower);
 
-
     }
 }
