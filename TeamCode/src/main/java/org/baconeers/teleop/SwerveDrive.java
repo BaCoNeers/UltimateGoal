@@ -20,7 +20,6 @@ public class SwerveDrive extends BaconComponent {
     double leftMotorPower = 0;
     double rightMotorPower = 0;
 
-
     public SwerveDrive(BaconOpMode opmodeIn, UltimateGoalConfiguration configIn, Telemetry telemetryIn) {
         super(opmodeIn);
         opmode = opmodeIn;
@@ -29,17 +28,16 @@ public class SwerveDrive extends BaconComponent {
     }
 
     public void update() {
-
+        
         drivePower = opmode.gamepad1.left_stick_y;
         turnPower = opmode.gamepad1.right_stick_x;
 
-
         if (turnPower > 0 || turnPower < 0) {
-            leftMotorPower = drivePower + (turnFactor * turnPower);
-            rightMotorPower = drivePower 	 - (turnFactor * turnPower);
+            leftMotorPower = drivePower + (turnPower * turnFactor);
+            rightMotorPower = drivePower - (turnPower * turnFactor);
         } else {
             leftMotorPower = drivePower;
-            rightMotorPower =drivePower;
+            rightMotorPower = drivePower;
         }
 
         Range.clip(leftMotorPower,-1,1);
@@ -47,7 +45,5 @@ public class SwerveDrive extends BaconComponent {
 
         config.leftMotor.setPower(leftMotorPower);
         config.rightMotor.setPower(rightMotorPower);
-
-
     }
 }
