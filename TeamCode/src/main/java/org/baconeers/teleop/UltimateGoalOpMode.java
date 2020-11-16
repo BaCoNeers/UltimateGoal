@@ -3,6 +3,7 @@ package org.baconeers.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.teleop.BaconOpMode;
+import org.baconeers.common.templates.ConfigurationTemplate;
 
 @TeleOp(name = "UltimateGoalOpMode", group = "Linear Opmode")
 public class UltimateGoalOpMode extends BaconOpMode {
@@ -17,7 +18,9 @@ public class UltimateGoalOpMode extends BaconOpMode {
      *      private TankDrive drive = null;
      *
      */
-
+    private Harvester harvester = null;
+    private ConfigurationTemplate config = null;
+    private SwerveDrive drive = null;
     @Override
     protected void onInit() {
         /**
@@ -37,7 +40,20 @@ public class UltimateGoalOpMode extends BaconOpMode {
          *
          */
     }
+    config = ConfigurationTemplate.newConfig(hardwareMap, telemetry);
+    try {
+        harvester = new Harvester(this, config);
 
+    } catch (Exception e) {
+        telemetry.addLine("Failed to initialise harvester");
+    }
+
+    try {
+        drive = new SwerveDrive(this, config, telemetry);
+
+    } catch (Exception e) {
+        telemetry.addLine("Failed to initialise drive");
+    }
     @Override
     protected void activeLoop() throws InterruptedException {
         /**
@@ -56,5 +72,11 @@ public class UltimateGoalOpMode extends BaconOpMode {
          *      }
          *
          */
+        if (harvester != null) {
+            harvester.update();
+        }
+        if (drive != null) {
+            drive.update();
+        }
     }
 }
