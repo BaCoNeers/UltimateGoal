@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.baconeers.common.teleop.BaconComponent;
 import org.baconeers.common.teleop.BaconOpMode;
-import org.baconeers.common.templates.ConfigurationTemplate;
 import org.baconeers.configurations.UltimateGoalConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -43,7 +42,7 @@ public class SwerveDrive extends BaconComponent {
         Range.clip(leftMotorPower,-1,1);
         Range.clip(rightMotorPower,-1,1);
 
-        config.leftMotor.setPower(leftMotorPower);
-        config.rightMotor.setPower(rightMotorPower);
+        config.leftDriveMotor.setPower(leftMotorPower);
+        config.rightDriveMotor.setPower(rightMotorPower);
     }
 }

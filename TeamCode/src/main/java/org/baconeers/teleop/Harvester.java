@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.baconeers.common.teleop.BaconComponent;
 import org.baconeers.common.teleop.BaconOpMode;
-import org.baconeers.common.templates.ConfigurationTemplate;
 import org.baconeers.configurations.UltimateGoalConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -40,9 +39,9 @@ public class Harvester extends BaconComponent {
         Range.clip(MotorPower,-1,1);
         // clip at a min of 0; - Bryce
         if (toggle) {
-            config.leftMotor.setPower(turnPower);
+            config.leftDriveMotor.setPower(turnPower);
         } else {
-            config.leftMotor.setPower(offTurnPower);
+            config.leftDriveMotor.setPower(offTurnPower);
         }
         // are there only two motors we can set the power for? - Bryce
 
