@@ -4,8 +4,6 @@ import org.baconeers.common.teleop.BaconOpMode;
 
 public abstract class BaseTask {
 
-    protected boolean isFinished = false;
-    protected double startTime = 0;
     protected BaconOpMode opMode;
 
     /**
@@ -15,11 +13,10 @@ public abstract class BaseTask {
 
     public static final double NANOS_IN_SECONDS = 1000000000.0;
 
-
     public BaseTask(BaconOpMode opMode) {
         this.opMode = opMode;
     }
 
     public abstract void run();
-    public abstract void isFinished();
+    public abstract boolean isFinished();
 }

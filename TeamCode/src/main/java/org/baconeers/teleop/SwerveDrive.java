@@ -2,6 +2,8 @@ package org.baconeers.teleop;
 
 import com.qualcomm.robotcore.util.Range;
 
+import org.baconeers.common.autonomous.BaseTask;
+import org.baconeers.common.autonomous.tasks.DriveTask;
 import org.baconeers.common.teleop.BaconComponent;
 import org.baconeers.common.teleop.BaconOpMode;
 import org.baconeers.common.templates.ConfigurationTemplate;
@@ -20,7 +22,6 @@ public class SwerveDrive extends BaconComponent {
     double leftMotorPower = 0;
     double rightMotorPower = 0;
 
-
     public SwerveDrive(BaconOpMode opmodeIn, UltimateGoalConfiguration configIn, Telemetry telemetryIn) {
         super(opmodeIn);
         opmode = opmodeIn;
@@ -29,6 +30,7 @@ public class SwerveDrive extends BaconComponent {
     }
 
     public void update() {
+
 
         drivePower = opmode.gamepad1.left_stick_y;
         turnPower = opmode.gamepad1.right_stick_x;
@@ -47,7 +49,6 @@ public class SwerveDrive extends BaconComponent {
 
         config.leftMotor.setPower(leftMotorPower);
         config.rightMotor.setPower(rightMotorPower);
-
 
     }
 }

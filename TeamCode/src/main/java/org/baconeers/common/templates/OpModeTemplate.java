@@ -6,6 +6,9 @@ import org.baconeers.common.teleop.BaconOpMode;
 
 @TeleOp(name = "OpModeTemplate", group = "Linear Opmode")
 public class OpModeTemplate extends BaconOpMode {
+
+
+
     /**
      *
      *      Declare copies of every TeleOp class required for the robot, including the configuration
