@@ -21,6 +21,7 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
 
      public DcMotor leftMotor;
      public DcMotor rightMotor;
+     public DcMotor baseHarvesterMotor;
 
 
     @Override
@@ -68,6 +69,17 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
 
         } catch(Exception e) {
             telemetry.addLine("rightMotor failed to configure");
+        }
+
+        try {
+            baseHarvesterMotor = hardwareMap.get(DcMotor.class, "baseHarvesterMotor");
+            if(baseHarvesterMotor != null) {
+                baseHarvesterMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                baseHarvesterMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+            }
+
+        } catch(Exception e) {
+            telemetry.addLine("baseHarvesterMotor failed to configure");
         }
 
         telemetry.addData("Initialized", "True");
