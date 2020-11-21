@@ -23,7 +23,9 @@ public class AutonomousOpModeTemplate extends BaconOpMode {
      */
 
     private ConfigurationTemplate config;
+
     private ArrayDeque<BaseTask> tasks = new ArrayDeque<BaseTask>();
+    private boolean taskInProgress = false;
 
     /**
      *
@@ -62,12 +64,11 @@ public class AutonomousOpModeTemplate extends BaconOpMode {
     @Override
     protected void activeLoop() throws InterruptedException {
         BaseTask currentTask = tasks.peekFirst();
-        boolean taskInProgress = false;
 
         if(currentTask == null) {
             return;
         }
-        else if(taskInProgress) {
+        else if(!taskInProgress) {
             currentTask.run();
             taskInProgress = true;
         }
