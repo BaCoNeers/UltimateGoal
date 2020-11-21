@@ -5,12 +5,17 @@ import org.baconeers.common.teleop.BaconOpMode;
 import org.baconeers.configurations.UltimateGoalConfiguration;
 
 public class DriveTask extends BaseTask {
-
+    // Config
     private UltimateGoalConfiguration config;
+
+    // Drive speed enum
     public enum DriveSpeed { SLOW, MEDIUM, FAST }
     private DriveSpeed driveSpeed;
+
+    // Distance in metres
     double distance;
 
+    // Speed in metres per second
     int speed;
     double motorPower;
     double endTime = 0;
@@ -22,37 +27,28 @@ public class DriveTask extends BaseTask {
 
         switch(driveSpeed) {
             case SLOW:
-                speed = 4;
+                speed = 1;
                 motorPower = .3;
                 break;
-
             case MEDIUM:
-                speed = 5;
+                speed = 1;
                 motorPower = .6;
-
                 break;
-
             case FAST:
-                speed = 6;
+                speed = 1;
                 motorPower = .9;
                 break;
-
             default:
-                speed = 7;
+                speed = 1;
                 motorPower = 1;
                 break;
         }
-
     }
 
     @Override
     public void run() {
-        if(endTime == 0) {
-            endTime = (System.nanoTime() / NANOS_IN_SECONDS) + (distance / speed);
-        }
-
+        endTime = (System.nanoTime() / NANOS_IN_SECONDS) + (distance / speed);
         config.leftMotor.setPower(motorPower);
-
     }
 
     @Override
