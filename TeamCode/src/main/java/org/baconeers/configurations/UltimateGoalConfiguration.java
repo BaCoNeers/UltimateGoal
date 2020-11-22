@@ -3,6 +3,7 @@ package org.baconeers.configurations;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.hardware.bosch.BNO055IMU;
 
 import org.baconeers.common.utilities.RobotConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -22,6 +23,7 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
      public DcMotor leftMotor;
      public DcMotor rightMotor;
      public DcMotor baseHarvesterMotor;
+     public BNO055IMU imu;
 
 
     @Override
@@ -80,6 +82,23 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
 
         } catch(Exception e) {
             telemetry.addLine("baseHarvesterMotor failed to configure");
+        }
+
+        try {
+            BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+            parameters.mode = BNO055IMU.SensorMode.IMU;
+            parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+            parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+            parameters.loggingEnabled = false;
+
+            imu = hardwareMap.get(BNO055IMU.class, "imu");
+
+            if(imu != null) {
+                imu.initialize(parameters);
+            }
+
+        } catch(Exception e) {
+            telemetry.addLine("imu failed to configure");
         }
 
         telemetry.addData("Initialized", "True");
