@@ -6,45 +6,29 @@ import org.baconeers.configurations.UltimateGoalConfiguration;
 
 public class HarvesterTask extends BaseTask {
 
-    private UltimateGoalConfiguration config;
-    private boolean on;
+    private final UltimateGoalConfiguration config;
 
-    final double onPower = 1;
-    final double offPower = 0;
+    private final double harvesterPower = 1;
+
     double endTime = 0;
-    boolean isFinished = false;
-    double time;
+    double duration;
 
-    public HarvesterTask(BaconOpMode opMode, UltimateGoalConfiguration config, boolean On, double Time) {
+    public HarvesterTask(BaconOpMode opMode, UltimateGoalConfiguration config, double duration) {
         super(opMode);
         this.config = config;
-        this.on = On;
-        this.time = Time;
-
+        this.duration = duration;
     }
 
     @Override
     public void run() {
-        if (on) {
-            config.baseHarvesterMotor.setPower(onPower);
-        } else {
-            config.baseHarvesterMotor.setPower(offPower);
-        }
-        if (endTime == 0) {
-            endTime = (System.nanoTime() / NANOS_IN_SECONDS) + time;
-
-        }
-        isFinished = true;
+        endTime = (System.nanoTime() / NANOS_IN_SECONDS) + duration;
+        config.baseHarvesterMotor.setPower(harvesterPower);
     }
 
     @Override
     public boolean isFinished() {
         if((System.nanoTime() / NANOS_IN_SECONDS) > endTime) {
-            if (on && time > 0) {
-                config.baseHarvesterMotor.setPower(offPower);
-            } else if (!on && time > 0) {
-                config.baseHarvesterMotor.setPower(onPower);
-            }
+            config.baseHarvesterMotor.setPower(0);
             return true;
         }
         return false;

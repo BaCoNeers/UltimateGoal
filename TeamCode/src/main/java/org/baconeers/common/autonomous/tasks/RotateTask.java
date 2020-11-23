@@ -56,11 +56,13 @@ public class RotateTask extends BaseTask {
         }
     }
 
+    @Override
     public void run() {
         previousAngles = config.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES); // Initial rotation
         currentAngle = 0;
     }
 
+    @Override
     public boolean isFinished() {
         if (currentAngle > (this.targetAngle - this.tolerance) && currentAngle < (this.targetAngle + this.tolerance)) {
             config.leftMotor.setPower(0);
