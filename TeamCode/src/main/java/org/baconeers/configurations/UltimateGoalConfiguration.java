@@ -23,7 +23,7 @@ public class UltimateGoalConfiguration extends RobotConfiguration {
      public DcMotor leftMotor;
      public DcMotor rightMotor;
      public DcMotor baseHarvesterMotor;
-     public BNO055IMU imu;
+     public BNO055IMU imu; // Inertial Measurement Unit
 
 
     @Override

@@ -23,7 +23,7 @@ public class Autonomous {
 
 
     private void activeLoop() {
-        tasks.add(new HarvesterTask(opmode,config,true,0));
+        tasks.add(new HarvesterTask(opmode,config,0));
         tasks.add(new DriveTask(opmode, config, DriveTask.DriveSpeed.MEDIUM, 19));
         tasks.add(new DriveTask(opmode, config, DriveTask.DriveSpeed.SLOW, 1));
         tasks.add(new DriveTask(opmode, config, DriveTask.DriveSpeed.FAST, 23));

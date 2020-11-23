@@ -12,8 +12,7 @@ public class LiftTask extends BaseTask {
     public enum LiftDirection { UP, DOWN }
     private LiftDirection liftDirection;
 
-    // Run lift for 3 seconds
-    private double endTime;
+    private double endTime; // Should be 3 seconds
 
     public LiftTask(BaconOpMode opmode, UltimateGoalConfiguration config, LiftDirection liftDirection) {
         super(opmode);

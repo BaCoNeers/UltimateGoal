@@ -5,7 +5,7 @@ import org.baconeers.common.teleop.BaconOpMode;
 import org.baconeers.configurations.UltimateGoalConfiguration;
 
 public class HarvesterTask extends BaseTask {
-
+    // Config
     private final UltimateGoalConfiguration config;
 
     private final double harvesterPower = 1;
