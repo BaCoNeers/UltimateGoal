@@ -35,15 +35,16 @@ public class Harvester extends BaconComponent {
                 toggle = true;
             }
         }
-        // button y pressed to toggle
+        // Above checks if key y on gamepad 1 has been toggled on
         Range.clip(MotorPower,-1,1);
-        // clip at a min of 0; - Bryce
+        // clip at a min of 0
         if (toggle) {
-            config.leftDriveMotor.setPower(turnPower);
+            config.leftHarvesterMotor.setPower(turnPower);
         } else {
-            config.leftDriveMotor.setPower(offTurnPower);
+            config.leftHarvesterMotor.setPower(offTurnPower);
         }
-        // are there only two motors we can set the power for? - Bryce
+        // sets the harvester motor to full power if toggled on, and the same motor to off when toggled off
+        // i'm going to guess the confusing part was that i was using the Left Drive Motor, that was just a place holder as i did not know how to add a new motor
 
     }
 }
